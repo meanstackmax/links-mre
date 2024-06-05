@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { navigate } from "vike/client/router";
 import HashLink from "../../renderer/HashLink";
 
 const Page = () => {
@@ -8,13 +9,22 @@ const Page = () => {
 
   return (
     <div style={{ display: "flex", gap: 10 }}>
-      <a href="/debug/anchor#first-section" style={smoothScroll}>
+      <a href="anchor#first-section" style={smoothScroll}>
         Go to red
       </a>
-      <a href="/debug/anchor#second-section" style={smoothScroll}>
-        Go to blue
+      <a href="anchor#second-section">Go to blue</a>
+      <a href="anchor#third-section">Go to yellow</a>
+      <a
+        href="/test/anchor#third-section"
+        onClick={() =>
+          navigate("/test/anchor#third-section", { keepScrollPosition: true })
+        }
+      >
+        Go to yellow on different route
       </a>
-      <HashLink href="/debug/anchor#third-section">Go to yellow</HashLink>
+      <HashLink href="/debug/anchor#third-section">
+        Go to yellow from Hashlink component
+      </HashLink>
     </div>
   );
 };
